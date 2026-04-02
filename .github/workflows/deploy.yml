@@ -31,14 +31,17 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        working-directory: ai-trading-dashboard/frontend
-        run: npm install
+        run: |
+          cd ai-trading-dashboard/frontend
+          npm ci
 
-      - name: Build
-        working-directory: ai-trading-dashboard/frontend
-        env:
-          VITE_BACKEND_URL: https://ai-trading-dashboard-sotg.onrender.com
-        run: npm run build
+      - name: Fix permissions and Build
+        run: |
+          cd ai-trading-dashboard/frontend
+          chmod +x node_modules/.bin/vite
+          chmod +x node_modules/.bin/react
+          export VITE_BACKEND_URL=https://ai-trading-dashboard-sotg.onrender.com
+          ./node_modules/.bin/vite build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

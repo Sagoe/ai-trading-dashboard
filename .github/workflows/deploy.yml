@@ -36,7 +36,7 @@ jobs:
           VITE_BACKEND_URL: https://ai-trading-dashboard-sotg.onrender.com
         run: |
           npm install
-          npm run build
+          npm vite build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

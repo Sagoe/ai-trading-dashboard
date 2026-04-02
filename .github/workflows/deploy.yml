@@ -51,8 +51,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-```
-
-The key change is the Build step now calls vite directly:
-```
-node node_modules/vite/bin/vite.js build

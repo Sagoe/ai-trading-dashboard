@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  /* ── Dark theme (default) ── */
+  :root {
+    --bg-primary:   #0a0e1a;
+    --bg-secondary: #0f1628;
+    --bg-card:      #131c30;
+    --text-primary: #e8f0fe;
+    --text-muted:   #8899aa;
+    --border-color: #1e2d44;
+    --color-accent: #00d4ff;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color:            var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark grid pattern */
+  html.dark body {
+    background-image:
+      linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Light mode overrides */
+  html:not(.dark) body {
+    background-image: none;
+  }
+  html:not(.dark) .card {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  html:not(.dark) .bg-bg-secondary { background: #ffffff !important; }
+  html:not(.dark) .bg-bg-primary   { background: #f0f4f8 !important; }
+  html:not(.dark) .bg-bg-hover     { background: #f8fafc !important; }
+  html:not(.dark) .text-text-primary  { color: #0f1628 !important; }
+  html:not(.dark) .text-text-secondary { color: #334155 !important; }
+  html:not(.dark) .text-text-muted    { color: #64748b !important; }
+  html:not(.dark) .border-border      { border-color: #e2e8f0 !important; }
+  html:not(.dark) aside               { background: #ffffff !important; border-color: #e2e8f0 !important; }
+  html:not(.dark) header              { background: rgba(255,255,255,0.9) !important; border-color: #e2e8f0 !important; }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 2px; }
+}
+
+@layer components {
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: var(--card-padding, 1rem);
+    transition: background 0.3s ease, border-color 0.3s ease;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-accent-cyan/30 hover:bg-bg-hover cursor-pointer;
+  }
+  .badge-buy  { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-mono font-semibold bg-accent-green/10  text-accent-green  border border-accent-green/20;  }
+  .badge-sell { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-mono font-semibold bg-accent-red/10    text-accent-red    border border-accent-red/20;    }
+  .badge-hold { @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-mono font-semibold bg-accent-yellow/10 text-accent-yellow border border-accent-yellow/20; }
+  .stat-up    { @apply text-accent-green font-mono text-sm; }
+  .stat-down  { @apply text-accent-red   font-mono text-sm; }
+  .input-primary {
+    @apply bg-bg-secondary border border-border rounded-lg px-4 py-2 text-text-primary
+           placeholder-text-muted outline-none transition-all
+           focus:border-accent-cyan/60 focus:ring-1 focus:ring-accent-cyan/20 text-sm;
+  }
+  .btn-primary {
+    @apply bg-accent-cyan/10 border border-accent-cyan/40 text-accent-cyan
+           px-4 py-2 rounded-lg text-sm font-medium
+           hover:bg-accent-cyan/20 transition-all duration-150 active:scale-95;
+  }
+  .btn-ghost {
+    @apply text-text-secondary hover:text-text-primary px-3 py-2 rounded-lg
+           hover:bg-bg-hover transition-all duration-150 text-sm;
+  }
+  .live-dot {
+    @apply w-2 h-2 rounded-full bg-accent-green;
+    animation: pulse-dot 2s infinite;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, #131c30 25%, #1a2540 50%, #131c30 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    @apply rounded;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fade-in-up 0.4s ease both; }

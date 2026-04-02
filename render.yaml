@@ -1,0 +1,20 @@
+# Render.com deployment config
+# Place this file in your project ROOT (ai-trading-dashboard/)
+
+services:
+  - type: web
+    name: ai-trading-backend
+    runtime: python
+    rootDir: ai-trading-dashboard/backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: NEWS_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        value: '["https://YOUR_GITHUB_USERNAME.github.io"]'
+      - key: APP_ENV
+        value: production
+      - key: DEBUG
+        value: "false"
+    healthCheckPath: /health

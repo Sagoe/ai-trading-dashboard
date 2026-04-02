@@ -42,3 +42,5 @@ Thumbs.db
 # Logs
 *.log
 uvicorn.log
+ai-trading-dashboard/frontend/node_modules/
+ai-trading-dashboard/frontend/.vite/

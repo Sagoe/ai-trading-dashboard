@@ -30,13 +30,6 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Find frontend folder
-        run: |
-          echo "Root contents:"
-          ls -la
-          echo "Looking for frontend:"
-          find . -name "package.json" -not -path "*/node_modules/*" | head -20
-
       - name: Install dependencies
         run: |
           cd ai-trading-dashboard/frontend
@@ -46,7 +39,7 @@ jobs:
         run: |
           cd ai-trading-dashboard/frontend
           export VITE_BACKEND_URL=https://ai-trading-dashboard-sotg.onrender.com
-          npm run build
+          npx vite build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

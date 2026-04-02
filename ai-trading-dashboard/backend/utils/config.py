@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     APP_ENV: str = "development"
     DEBUG: bool = True
     NEWS_API_KEY: str = ""
-    CORS_ORIGINS: Union[List[str], str] = ["http://localhost:5173", "http://localhost:3000"]
+    CORS_ORIGINS: Union[List[str], str] = ["https://sagoe.github.io", "http://localhost:5173", "http://localhost:3000"]
     MODEL_DIR: str = "./ml/saved_models"
     DATA_CACHE_DIR: str = "./data/cache"
     HOST: str = "0.0.0.0"

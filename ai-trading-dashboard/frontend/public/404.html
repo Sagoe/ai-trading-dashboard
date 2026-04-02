@@ -4,14 +4,9 @@
   <meta charset="utf-8">
   <title>AI Trading Dashboard</title>
   <script>
-    // Redirect SPA routes to index.html on GitHub Pages
-    var repo = '/ai-trading-dashboard';
-    var path = window.location.pathname.replace(repo, '');
-    var search = window.location.search;
-    var hash = window.location.hash;
-    var redirect = repo + '/?p=' + encodeURIComponent(path) + (search ? '&q=' + encodeURIComponent(search.slice(1)) : '') + hash;
-    window.location.replace(redirect);
+    sessionStorage.redirect = location.href;
   </script>
+  <meta http-equiv="refresh" content="0;URL='/ai-trading-dashboard/'">
 </head>
 <body>Redirecting...</body>
 </html>

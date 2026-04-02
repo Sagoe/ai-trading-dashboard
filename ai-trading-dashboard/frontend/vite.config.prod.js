@@ -1,16 +1,9 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// IMPORTANT: Replace YOUR_GITHUB_USERNAME with your actual GitHub username
-// IMPORTANT: Replace YOUR_RENDER_BACKEND_URL with your Render backend URL
-//            e.g. https://ai-trading-backend.onrender.com
-
-const BACKEND_URL = "https://YOUR_RENDER_BACKEND_URL.onrender.com";
-const REPO_NAME   = "ai-trading-dashboard"; // your GitHub repo name
-
 export default defineConfig({
   plugins: [react()],
-  base: `/${REPO_NAME}/`,   // required for GitHub Pages
+  base: "/ai-trading-dashboard/",
   server: {
     port: 5173,
     proxy: {
@@ -24,8 +17,5 @@ export default defineConfig({
   },
   build: {
     outDir: "dist",
-    define: {
-      __BACKEND_URL__: JSON.stringify(BACKEND_URL),
-    },
   },
 });

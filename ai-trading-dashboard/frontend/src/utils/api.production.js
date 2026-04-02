@@ -1,9 +1,9 @@
 import axios from "axios";
 
-// In production, calls go directly to Render backend
-// In development, Vite proxy routes to localhost:8000
+// Production: points to Render backend
+// Development: Vite proxy routes to localhost:8000
 const BACKEND = import.meta.env.PROD
-  ? (import.meta.env.VITE_BACKEND_URL || "https://YOUR_RENDER_BACKEND_URL.onrender.com")
+  ? "https://ai-trading-dashboard-sotg.onrender.com"
   : "";
 
 const api = axios.create({

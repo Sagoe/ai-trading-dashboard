@@ -30,13 +30,15 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Install and Build
+      - name: Install dependencies
+        working-directory: ai-trading-dashboard/frontend
+        run: npm install
+
+      - name: Build
         working-directory: ai-trading-dashboard/frontend
         env:
           VITE_BACKEND_URL: https://ai-trading-dashboard-sotg.onrender.com
-        run: |
-          npm install
-          npm run build
+        run: node node_modules/vite/bin/vite.js build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

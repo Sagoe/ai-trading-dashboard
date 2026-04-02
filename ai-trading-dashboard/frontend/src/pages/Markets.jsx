@@ -3,7 +3,6 @@ import Layout from "../components/layout/Layout";
 import { ChangePill, SectionHeader, ErrorBox } from "../components/ui";
 import { getStockPrice } from "../utils/api";
 import { useStore } from "../store/useStore";
-import { TrendingUp, TrendingDown } from "lucide-react";
 import PriceChart from "../components/charts/PriceChart";
 import { useHistory } from "../hooks/useData";
 
@@ -58,14 +57,12 @@ export default function Markets() {
         <p className="text-text-muted text-sm mt-1">Live prices for major stocks</p>
       </div>
 
-      {/* Ticker grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 mb-6">
         {TICKERS.map((sym) => (
           <MiniTicker key={sym} sym={sym} onSelect={pickSymbol} selected={selected} />
         ))}
       </div>
 
-      {/* Selected detail chart */}
       <div className="card">
         <SectionHeader title={`${selected} — 6 Month Chart`} sub="OHLCV with technical indicators" />
         {loading

@@ -16,7 +16,7 @@ import { useStore } from "../store/useStore";
 import { getStockPrice } from "../utils/api";
 import axios from "axios";
 
-const REFRESH_MS  = 30000;
+const REFRESH_MS  = 300000;
 const BACKEND_URL = import.meta.env.PROD
   ? "https://ai-trading-dashboard-sotg.onrender.com"
   : "";

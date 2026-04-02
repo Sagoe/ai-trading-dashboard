@@ -1,7 +1,5 @@
 import axios from "axios";
 
-// Production: points to Render backend
-// Development: Vite proxy routes to localhost:8000
 const BACKEND = import.meta.env.PROD
   ? "https://ai-trading-dashboard-sotg.onrender.com"
   : "";

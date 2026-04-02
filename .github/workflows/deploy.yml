@@ -28,19 +28,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "18"
 
-      - name: Install dependencies
-        working-directory: ai-trading-dashboard/frontend
-        run: npm install --legacy-peer-deps
-
-      - name: Build
+      - name: Install and Build
         working-directory: ai-trading-dashboard/frontend
         env:
           VITE_BACKEND_URL: https://ai-trading-dashboard-sotg.onrender.com
         run: |
-          chmod -R +x node_modules/.bin
-          ./node_modules/.bin/vite build --mode production
+          npm install
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

@@ -38,7 +38,7 @@ jobs:
         working-directory: ai-trading-dashboard/frontend
         env:
           VITE_BACKEND_URL: https://ai-trading-dashboard-sotg.onrender.com
-        run: node node_modules/vite/bin/vite.js build
+        run: node node_modules/vite/bin/vite.js build --base=/ai-trading-dashboard/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
